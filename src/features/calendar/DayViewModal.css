@@ -1,0 +1,177 @@
+/**
+ * DayViewModal.css — styling for day view modal/popup.
+ */
+
+.day-view-modal {
+  max-width: 540px;
+}
+
+.day-modal-subtitle {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.day-modal-body {
+  padding: var(--space-20) var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  flex: 1;
+  overflow-y: auto;
+}
+
+.day-modal-actions-top {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.day-modal-add-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: 10px 16px;
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  box-shadow: var(--shadow-sm);
+  transition: background var(--transition-fast);
+}
+
+.day-modal-add-btn:hover {
+  background: var(--color-accent-hover);
+}
+
+.day-modal-empty {
+  text-align: center;
+  padding: var(--space-32) 0;
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+}
+
+.day-modal-task-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.day-modal-task-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.day-modal-task-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.day-modal-task-card.is-done {
+  opacity: 0.65;
+}
+
+.day-modal-task-main {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-12);
+}
+
+.day-modal-check-wrap {
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.day-modal-check-wrap input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.day-modal-task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.day-modal-task-title {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+
+.day-modal-task-card.is-done .day-modal-task-title {
+  text-decoration: line-through;
+  color: var(--color-text-secondary);
+}
+
+.day-modal-task-notes {
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.day-modal-task-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-top: 4px;
+}
+
+.day-modal-cat-badge {
+  font-size: 11px;
+  font-weight: var(--fw-medium);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+}
+
+.day-modal-sub-progress {
+  font-size: var(--fs-xs);
+  color: var(--color-text-tertiary);
+}
+
+.day-modal-subtasks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-left: 30px;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-8);
+}
+
+.day-modal-subtask-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.day-modal-subtask-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.day-modal-subtask-item span.is-done {
+  text-decoration: line-through;
+  color: var(--color-text-tertiary);
+}

@@ -1,0 +1,153 @@
+/* ============================================================
+ * Design Tokens — Plan task planner
+ * Warm, editorial palette inspired by calm, trustworthy design.
+ * ============================================================ */
+
+:root {
+  /* --- Colour tokens --- */
+  --color-bg: #FAF9F5;
+  --color-bg-raised: #FFFFFF;
+  --color-bg-warm: #F5F4ED;
+  --color-border: #E8E6DC;
+  --color-border-strong: #D5D3C9;
+
+  --color-text: #141413;
+  --color-text-secondary: #5E5D59;
+  --color-text-tertiary: #8A8985;
+  --color-text-inverse: #FFFFFF;
+
+  --color-accent: #C96442;
+  --color-accent-hover: #B55535;
+  --color-accent-light: #F7EBE6;
+  --color-accent-muted: #E8C4B4;
+
+  --color-success: #4A7C59;
+  --color-success-light: #E6F0E9;
+  --color-danger: #C0392B;
+  --color-danger-light: #F8E6E4;
+  --color-warning: #D97757;
+
+  /* Category palette — 8 muted colours */
+  --cat-blue: #5B7FA5;
+  --cat-green: #6A9B7E;
+  --cat-amber: #C49A4A;
+  --cat-rose: #C27171;
+  --cat-violet: #8B72B0;
+  --cat-teal: #55998E;
+  --cat-orange: #C9804A;
+  --cat-slate: #7A8590;
+
+  /* --- Typography --- */
+  --font-serif: 'Newsreader', 'Source Serif 4', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --fs-xs: 13px;
+  --fs-sm: 14px;
+  --fs-base: 16px;
+  --fs-md: 20px;
+  --fs-lg: 28px;
+  --fs-xl: 40px;
+
+  --lh-body: 1.55;
+  --lh-heading: 1.2;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+
+  --ls-heading: -0.02em;
+
+  /* --- Spacing --- */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+
+  /* --- Radius --- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 3px rgba(20, 20, 19, 0.04), 0 1px 2px rgba(20, 20, 19, 0.02);
+  --shadow-md: 0 4px 12px rgba(20, 20, 19, 0.06), 0 1px 4px rgba(20, 20, 19, 0.03);
+  --shadow-lg: 0 8px 32px rgba(20, 20, 19, 0.08), 0 2px 8px rgba(20, 20, 19, 0.04);
+
+  /* --- Transitions --- */
+  --transition-fast: 150ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* --- Z-index layers --- */
+  --z-dropdown: 100;
+  --z-modal-backdrop: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+}
+
+/* ---- Dark mode (system) ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #1A1918;
+    --color-bg-raised: #242321;
+    --color-bg-warm: #2A2926;
+    --color-border: #3A3835;
+    --color-border-strong: #4A4845;
+
+    --color-text: #E8E6E1;
+    --color-text-secondary: #A5A49F;
+    --color-text-tertiary: #7A7975;
+    --color-text-inverse: #141413;
+
+    --color-accent: #D97757;
+    --color-accent-hover: #E08A6D;
+    --color-accent-light: #3A2A22;
+    --color-accent-muted: #5A3A2A;
+
+    --color-success: #6BB57E;
+    --color-success-light: #1F2E23;
+    --color-danger: #E05A4F;
+    --color-danger-light: #3A2020;
+    --color-warning: #E89A75;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.20), 0 1px 2px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.18);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.30), 0 2px 8px rgba(0, 0, 0, 0.20);
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #1A1918;
+  --color-bg-raised: #242321;
+  --color-bg-warm: #2A2926;
+  --color-border: #3A3835;
+  --color-border-strong: #4A4845;
+
+  --color-text: #E8E6E1;
+  --color-text-secondary: #A5A49F;
+  --color-text-tertiary: #7A7975;
+  --color-text-inverse: #141413;
+
+  --color-accent: #D97757;
+  --color-accent-hover: #E08A6D;
+  --color-accent-light: #3A2A22;
+  --color-accent-muted: #5A3A2A;
+
+  --color-success: #6BB57E;
+  --color-success-light: #1F2E23;
+  --color-danger: #E05A4F;
+  --color-danger-light: #3A2020;
+  --color-warning: #E89A75;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.20), 0 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.18);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.30), 0 2px 8px rgba(0, 0, 0, 0.20);
+}

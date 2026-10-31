@@ -289,14 +289,17 @@ export function WeekView({ onAddTask, onEditTask, onOpenDayView }: WeekViewProps
                           <span className="week-card__parent">{item.parentLabel}</span>
                         )}
                         <span className="week-card__title">{item.label}</span>
-                        <div className="week-card__footer">
-                          <span
-                            className="week-card__dot"
-                            style={{ backgroundColor: color }}
-                            title={cat?.name}
-                          />
-                          {isOverdue && <span className="week-card__overdue">overdue</span>}
-                        </div>
+                        {/*
+                      <div className="week-card__footer">
+                        <span
+                          className="week-card__dot"
+                          style={{ backgroundColor: color }}
+                          title={cat?.name}
+                        />
+                         //change the color of the dot as green if more than 2 days is left, yellow if 1-2 days left, red if 0 days left 
+                        {isOverdue && <span className="week-card__overdue">overdue</span>}
+                      </div>
+                      */}
                       </div>
                     </div>
                   );

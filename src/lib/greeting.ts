@@ -18,7 +18,7 @@ export function getGreeting(name: string, hour?: number): string {
     morning: 'Good morning',
     afternoon: 'Good afternoon',
     evening: 'Good evening',
-    night: 'Good night',
+    night: 'Hello',
   };
   return `${labels[tod]}, ${name}`;
 }

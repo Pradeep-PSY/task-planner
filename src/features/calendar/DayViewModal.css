@@ -91,7 +91,7 @@
   cursor: pointer;
 }
 
-.day-modal-check-wrap input[type="checkbox"] {
+.day-modal-check-wrap input[type='checkbox'] {
   width: 18px;
   height: 18px;
   accent-color: var(--color-accent);
@@ -164,7 +164,7 @@
   cursor: pointer;
 }
 
-.day-modal-subtask-item input[type="checkbox"] {
+.day-modal-subtask-item input[type='checkbox'] {
   width: 15px;
   height: 15px;
   accent-color: var(--color-accent);

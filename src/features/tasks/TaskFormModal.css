@@ -14,8 +14,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .task-modal {
@@ -32,8 +36,12 @@
 }
 
 @keyframes slideIn {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 640px) {
@@ -50,8 +58,12 @@
     animation: slideUp 200ms ease;
   }
   @keyframes slideUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
   }
 }
 
@@ -115,10 +127,10 @@
   letter-spacing: 0.04em;
 }
 
-.task-form-group input[type="text"],
+.task-form-group input[type='text'],
 .task-form-group textarea,
 .task-form-group select,
-.task-form-group input[type="date"] {
+.task-form-group input[type='date'] {
   padding: 10px 14px;
   border: 1px solid var(--color-border);
   background: var(--color-bg);
@@ -194,12 +206,12 @@
     grid-template-columns: 32px 1fr auto;
     grid-template-rows: auto auto;
   }
-  .subtask-row input[type="date"] {
+  .subtask-row input[type='date'] {
     grid-column: 2 / -1;
   }
 }
 
-.subtask-row input[type="text"] {
+.subtask-row input[type='text'] {
   padding: 8px 12px;
   border: 1px solid var(--color-border);
   background: var(--color-bg);
@@ -207,7 +219,7 @@
   font-size: var(--fs-sm);
 }
 
-.subtask-row input[type="date"] {
+.subtask-row input[type='date'] {
   padding: 8px;
   border: 1px solid var(--color-border);
   background: var(--color-bg);

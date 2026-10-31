@@ -5,9 +5,7 @@ import type { AppData, Task, Category } from '../types';
 describe('Storage compression round trip', () => {
   it('should round-trip simple data correctly', () => {
     const data: AppData = {
-      categories: [
-        { id: 1, name: 'Work', color: 'var(--cat-blue)' },
-      ],
+      categories: [{ id: 1, name: 'Work', color: 'var(--cat-blue)' }],
       tasks: [
         {
           id: '123',
@@ -18,9 +16,7 @@ describe('Storage compression round trip', () => {
           startDay: 20000,
           endDay: 20005,
           priority: 2,
-          subtasks: [
-            { title: 'Sub 1', done: true, day: 20000 },
-          ],
+          subtasks: [{ title: 'Sub 1', done: true, day: 20000 }],
         },
       ],
     };
@@ -32,9 +28,7 @@ describe('Storage compression round trip', () => {
   });
 
   it('should handle 1,000+ tasks efficiently', () => {
-    const categories: Category[] = [
-      { id: 1, name: 'Work', color: 'var(--cat-blue)' },
-    ];
+    const categories: Category[] = [{ id: 1, name: 'Work', color: 'var(--cat-blue)' }];
     const tasks: Task[] = [];
     for (let i = 0; i < 1200; i++) {
       tasks.push({

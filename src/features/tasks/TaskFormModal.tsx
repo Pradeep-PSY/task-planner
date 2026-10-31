@@ -30,12 +30,10 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
   const initialStart = editTask
     ? dayNumToDate(editTask.startDay)
     : defaultDate
-    ? dayNumToDate(defaultDate)
-    : new Date();
+      ? dayNumToDate(defaultDate)
+      : new Date();
 
-  const initialEnd = editTask
-    ? dayNumToDate(editTask.endDay)
-    : initialStart;
+  const initialEnd = editTask ? dayNumToDate(editTask.endDay) : initialStart;
 
   const [title, setTitle] = useState(editTask?.title ?? '');
   const [notes, setNotes] = useState(editTask?.notes ?? '');
@@ -43,14 +41,16 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
   const [priority, setPriority] = useState<Priority>(editTask?.priority ?? 1);
   const [startDateStr, setStartDateStr] = useState(toInputDateStr(initialStart));
   const [endDateStr, setEndDateStr] = useState(toInputDateStr(initialEnd));
-  const [subtasks, setSubtasks] = useState<Array<{ title: string; done: boolean; dateStr: string }>>(
+  const [subtasks, setSubtasks] = useState<
+    Array<{ title: string; done: boolean; dateStr: string }>
+  >(
     editTask
-      ? editTask.subtasks.map(st => ({
+      ? editTask.subtasks.map((st) => ({
           title: st.title,
           done: st.done,
           dateStr: toInputDateStr(dayNumToDate(st.day)),
         }))
-      : [],
+      : []
   );
 
   const [error, setError] = useState('');
@@ -122,8 +122,8 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
     }
 
     const parsedSubtasks: SubTask[] = subtasks
-      .filter(st => st.title.trim() !== '')
-      .map(st => {
+      .filter((st) => st.title.trim() !== '')
+      .map((st) => {
         const subDay = dateToDayNum(parseInputDateStr(st.dateStr));
         const clampedDay = clampDayNum(subDay, startDay, endDay);
         return {
@@ -164,7 +164,7 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
     <div className="modal-backdrop" onClick={onClose} role="presentation">
       <div
         className="task-modal"
-        onClick={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-label={editTask ? 'Edit task' : 'New task'}
@@ -185,7 +185,7 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
               id="task-title"
               type="text"
               value={title}
-              onChange={e => setTitle(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g. Launch website redesign"
               autoFocus
               required
@@ -198,9 +198,9 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
               <select
                 id="task-cat"
                 value={categoryId}
-                onChange={e => setCategoryId(Number(e.target.value))}
+                onChange={(e) => setCategoryId(Number(e.target.value))}
               >
-                {categories.map(c => (
+                {categories.map((c) => (
                   <option key={c.id} value={c.id}>
                     {c.name}
                   </option>
@@ -213,7 +213,7 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
               <select
                 id="task-priority"
                 value={priority}
-                onChange={e => setPriority(Number(e.target.value) as Priority)}
+                onChange={(e) => setPriority(Number(e.target.value) as Priority)}
               >
                 <option value={0}>Low</option>
                 <option value={1}>Normal</option>
@@ -229,7 +229,7 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
                 id="task-start"
                 type="date"
                 value={startDateStr}
-                onChange={e => setStartDateStr(e.target.value)}
+                onChange={(e) => setStartDateStr(e.target.value)}
               />
             </div>
             <div className="task-form-group">
@@ -238,7 +238,7 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
                 id="task-end"
                 type="date"
                 value={endDateStr}
-                onChange={e => setEndDateStr(e.target.value)}
+                onChange={(e) => setEndDateStr(e.target.value)}
               />
             </div>
           </div>
@@ -248,7 +248,7 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
             <textarea
               id="task-notes"
               value={notes}
-              onChange={e => setNotes(e.target.value)}
+              onChange={(e) => setNotes(e.target.value)}
               placeholder="Add details, links or context..."
               rows={2}
             />
@@ -275,15 +275,15 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
                   <input
                     type="checkbox"
                     checked={st.done}
-                    onChange={e => handleUpdateSubtask(idx, 'done', e.target.checked)}
+                    onChange={(e) => handleUpdateSubtask(idx, 'done', e.target.checked)}
                     aria-label={`Mark subtask "${st.title || 'untitled'}" done`}
                   />
                   <input
                     type="text"
                     value={st.title}
-                    onChange={e => handleUpdateSubtask(idx, 'title', e.target.value)}
+                    onChange={(e) => handleUpdateSubtask(idx, 'title', e.target.value)}
                     placeholder={`Sub-task ${idx + 1}`}
-                    onKeyDown={e => {
+                    onKeyDown={(e) => {
                       if (e.key === 'Enter') {
                         e.preventDefault();
                         handleAddSubtask();
@@ -295,7 +295,7 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
                     value={st.dateStr}
                     min={startDateStr}
                     max={endDateStr}
-                    onChange={e => handleUpdateSubtask(idx, 'dateStr', e.target.value)}
+                    onChange={(e) => handleUpdateSubtask(idx, 'dateStr', e.target.value)}
                     aria-label="Subtask date"
                   />
                   <div className="subtask-actions">
@@ -328,11 +328,7 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
               ))}
             </div>
 
-            <button
-              type="button"
-              className="subtasks-add-btn"
-              onClick={handleAddSubtask}
-            >
+            <button type="button" className="subtasks-add-btn" onClick={handleAddSubtask}>
               + Add sub-task
             </button>
           </div>
@@ -360,7 +356,7 @@ export function TaskFormModal({ editTask, defaultDate, onClose }: TaskFormModalP
 
         {showDeleteConfirm && (
           <div className="confirm-overlay" onClick={() => setShowDeleteConfirm(false)}>
-            <div className="confirm-dialog" onClick={e => e.stopPropagation()}>
+            <div className="confirm-dialog" onClick={(e) => e.stopPropagation()}>
               <h3>Delete task?</h3>
               <p>This will permanently remove "{editTask?.title}" and its sub-tasks.</p>
               <div className="confirm-buttons">

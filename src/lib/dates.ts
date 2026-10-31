@@ -30,7 +30,20 @@ export function todayDayNum(): number {
 
 /** Format date as "Oct 26" or "Oct 26, 2026" (with year if not current year). */
 export function formatShortDate(d: Date, alwaysYear = false): string {
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
   const month = months[d.getMonth()];
   const day = d.getDate();
   const year = d.getFullYear();
@@ -62,8 +75,24 @@ export function getWeekdayNames(startMonday: boolean): string[] {
   return startMonday ? WEEKDAYS_MON : WEEKDAYS_SUN;
 }
 
-const WEEKDAYS_FULL_MON = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-const WEEKDAYS_FULL_SUN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const WEEKDAYS_FULL_MON = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
+const WEEKDAYS_FULL_SUN = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
 
 export function getWeekdayFullNames(startMonday: boolean): string[] {
   return startMonday ? WEEKDAYS_FULL_MON : WEEKDAYS_FULL_SUN;
@@ -76,9 +105,7 @@ export function getWeekdayFullNames(startMonday: boolean): string[] {
 export function getWeekStart(date: Date, startMonday: boolean): Date {
   const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
   const day = d.getDay(); // 0=Sun
-  const diff = startMonday
-    ? (day === 0 ? -6 : 1 - day)
-    : -day;
+  const diff = startMonday ? (day === 0 ? -6 : 1 - day) : -day;
   d.setDate(d.getDate() + diff);
   return d;
 }
@@ -104,8 +131,18 @@ export function addDays(date: Date, n: number): Date {
 /** The month name + year, e.g. "October 2026". */
 export function formatMonthYear(d: Date): string {
   const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December',
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
   return `${months[d.getMonth()]} ${d.getFullYear()}`;
 }
@@ -127,9 +164,11 @@ export function getDaysInMonth(d: Date): number {
 
 /** Check if two dates are the same calendar day. */
 export function isSameDay(a: Date, b: Date): boolean {
-  return a.getFullYear() === b.getFullYear()
-    && a.getMonth() === b.getMonth()
-    && a.getDate() === b.getDate();
+  return (
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate()
+  );
 }
 
 /** Clamp a day number between min and max (inclusive). */

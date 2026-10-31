@@ -30,7 +30,7 @@ export function getGreeting(name: string, hour?: number): string {
 export function getHelperText(
   totalTasks: number,
   pendingTasks: number,
-  pendingSubtasks: number,
+  pendingSubtasks: number
 ): string {
   if (totalTasks === 0) {
     return 'Plan your first task.';
@@ -42,9 +42,7 @@ export function getHelperText(
   const parts: string[] = [];
 
   if (pendingTasks > 0) {
-    parts.push(
-      `You have ${pendingTasks} pending ${pendingTasks === 1 ? 'task' : 'tasks'}`,
-    );
+    parts.push(`You have ${pendingTasks} pending ${pendingTasks === 1 ? 'task' : 'tasks'}`);
   }
 
   if (pendingSubtasks > 0) {

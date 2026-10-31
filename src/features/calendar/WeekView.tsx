@@ -171,7 +171,9 @@ export function WeekView({ onAddTask, onEditTask, onOpenDayView }: WeekViewProps
               title="Click to view day"
             >
               <span className="week-view__weekday">{weekdayNames[i]}</span>
-              <span className={`week-view__date-num ${isToday ? 'week-view__date-num--today' : ''}`}>
+              <span
+                className={`week-view__date-num ${isToday ? 'week-view__date-num--today' : ''}`}
+              >
                 {date.getDate()}
               </span>
             </div>
@@ -189,32 +191,41 @@ export function WeekView({ onAddTask, onEditTask, onOpenDayView }: WeekViewProps
               const color = cat?.color ?? 'var(--color-text-tertiary)';
               const span = bar.endCol - bar.startCol + 1;
               const isOverdue = !bar.task.done && bar.task.endDay < today;
-              const progress = bar.totalCount > 0
-                ? `${bar.doneCount}/${bar.totalCount}`
-                : undefined;
+              const progress =
+                bar.totalCount > 0 ? `${bar.doneCount}/${bar.totalCount}` : undefined;
 
               return (
                 <button
                   key={bar.task.id}
                   className={`week-view__bar ${bar.task.done ? 'week-view__bar--done' : ''}`}
-                  style={{
-                    gridColumn: `${bar.startCol + 1} / span ${span}`,
-                    backgroundColor: color + '22',
-                    borderLeftColor: bar.continuesBefore ? 'transparent' : color,
-                    borderRightColor: bar.continuesAfter ? 'transparent' : 'transparent',
-                    '--bar-color': color,
-                  } as React.CSSProperties}
+                  style={
+                    {
+                      gridColumn: `${bar.startCol + 1} / span ${span}`,
+                      backgroundColor: color + '22',
+                      borderLeftColor: bar.continuesBefore ? 'transparent' : color,
+                      borderRightColor: bar.continuesAfter ? 'transparent' : 'transparent',
+                      '--bar-color': color,
+                    } as React.CSSProperties
+                  }
                   onClick={(e) => {
                     e.stopPropagation();
                     onEditTask(bar.task.id);
                   }}
                   title={bar.task.title}
                 >
-                  {bar.continuesBefore && <span className="week-view__cont" aria-label="continues from previous week">&laquo;</span>}
+                  {bar.continuesBefore && (
+                    <span className="week-view__cont" aria-label="continues from previous week">
+                      &laquo;
+                    </span>
+                  )}
                   <span className="week-view__bar-title">{bar.task.title}</span>
                   {progress && <span className="week-view__bar-progress">{progress}</span>}
                   {isOverdue && <span className="week-view__overdue-badge">overdue</span>}
-                  {bar.continuesAfter && <span className="week-view__cont" aria-label="continues next week">&raquo;</span>}
+                  {bar.continuesAfter && (
+                    <span className="week-view__cont" aria-label="continues next week">
+                      &raquo;
+                    </span>
+                  )}
                 </button>
               );
             })}
@@ -244,7 +255,7 @@ export function WeekView({ onAddTask, onEditTask, onOpenDayView }: WeekViewProps
                   return (
                     <div
                       key={itemIdx}
-                      className={`week-card ${item.done ? 'week-card--done' : ''} ${
+                      className={`week-card  ${item.done ? 'week-card--done' : ''} ${
                         item.type === 'subtask' ? 'week-card--subtask' : ''
                       }`}
                       onClick={(e) => {
@@ -264,7 +275,10 @@ export function WeekView({ onAddTask, onEditTask, onOpenDayView }: WeekViewProps
                                 subtaskIndex: item.subtaskIndex,
                               });
                             } else {
-                              dispatch({ type: 'TOGGLE_TASK', taskId: item.task.id });
+                              dispatch({
+                                type: 'TOGGLE_TASK',
+                                taskId: item.task.id,
+                              });
                             }
                           }}
                           aria-label={`Toggle "${item.label}"`}

@@ -50,7 +50,7 @@ export default function ConfirmDialog({
 
       if (e.key === 'Tab') {
         const focusable = [cancelBtnRef.current, confirmBtnRef.current].filter(
-          Boolean,
+          Boolean
         ) as HTMLElement[];
         if (focusable.length === 0) return;
 
@@ -70,7 +70,7 @@ export default function ConfirmDialog({
         }
       }
     },
-    [onCancel],
+    [onCancel]
   );
 
   /* Prevent backdrop click from propagating */
@@ -80,7 +80,7 @@ export default function ConfirmDialog({
         onCancel();
       }
     },
-    [onCancel],
+    [onCancel]
   );
 
   return (

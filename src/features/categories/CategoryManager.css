@@ -3,8 +3,12 @@
  * ============================================================ */
 
 @keyframes cat-backdrop-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes cat-modal-in {
@@ -26,17 +30,17 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-16);
-  background: rgba(20, 20, 19, 0.40);
+  background: rgba(20, 20, 19, 0.4);
   animation: cat-backdrop-in 150ms ease both;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .cat-backdrop {
-    background: rgba(0, 0, 0, 0.60);
+  :root:not([data-theme='light']) .cat-backdrop {
+    background: rgba(0, 0, 0, 0.6);
   }
 }
-:root[data-theme="dark"] .cat-backdrop {
-  background: rgba(0, 0, 0, 0.60);
+:root[data-theme='dark'] .cat-backdrop {
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .cat-modal {
@@ -79,7 +83,9 @@
   cursor: pointer;
   padding: var(--space-4);
   border-radius: var(--radius-sm);
-  transition: background var(--transition-fast), color var(--transition-fast);
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .cat-modal__close-btn:hover {
@@ -132,7 +138,7 @@
   height: 24px;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .cat-item__color-dropdown {

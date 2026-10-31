@@ -49,11 +49,7 @@ export default function WelcomeScreen() {
             maxLength={60}
           />
 
-          <button
-            className="welcome__button"
-            type="submit"
-            disabled={!trimmed}
-          >
+          <button className="welcome__button" type="submit" disabled={!trimmed}>
             Continue
           </button>
         </form>

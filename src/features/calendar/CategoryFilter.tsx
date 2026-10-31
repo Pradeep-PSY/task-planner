@@ -63,10 +63,7 @@ export function CategoryFilter({ onManageCategories }: CategoryFilterProps) {
               onClick={() => handleCategoryClick(cat.id)}
               aria-pressed={isSelected}
             >
-              <span
-                className="cat-filter__dot"
-                style={{ backgroundColor: cat.color }}
-              />
+              <span className="cat-filter__dot" style={{ backgroundColor: cat.color }} />
               {cat.name}
             </button>
           );

@@ -17,6 +17,8 @@ describe('Greeting and helper logic', () => {
     expect(getHelperText(5, 0, 0)).toBe("You're all caught up.");
     expect(getHelperText(5, 3, 0)).toBe('You have 3 pending tasks.');
     expect(getHelperText(5, 0, 2)).toBe('You have 2 sub-tasks pending across your main tasks.');
-    expect(getHelperText(5, 3, 2)).toBe('You have 3 pending tasks and 2 sub-tasks pending across your main tasks.');
+    expect(getHelperText(5, 3, 2)).toBe(
+      'You have 3 pending tasks and 2 sub-tasks pending across your main tasks.'
+    );
   });
 });

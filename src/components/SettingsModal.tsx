@@ -81,7 +81,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
         if (!panel) return;
 
         const focusable = panel.querySelectorAll<HTMLElement>(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         );
         if (focusable.length === 0) return;
 
@@ -101,7 +101,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
         }
       }
     },
-    [onClose],
+    [onClose]
   );
 
   /* --- Handlers --- */
@@ -148,9 +148,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
         setNameInput(meta.userName);
         setImportError(null);
       } catch (err: unknown) {
-        setImportError(
-          err instanceof Error ? err.message : 'Failed to import file.',
-        );
+        setImportError(err instanceof Error ? err.message : 'Failed to import file.');
       }
     };
     reader.onerror = () => {
@@ -192,11 +190,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
       aria-modal="true"
       aria-label="Settings"
     >
-      <div
-        className="settings-panel"
-        ref={panelRef}
-        tabIndex={-1}
-      >
+      <div className="settings-panel" ref={panelRef} tabIndex={-1}>
         {/* Header */}
         <div className="settings-header">
           <h2 className="settings-title">Settings</h2>
@@ -240,9 +234,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
             <div className="settings-toggle-text">
               {state.weekStartMonday ? 'Monday' : 'Sunday'}
               <small>
-                {state.weekStartMonday
-                  ? 'ISO standard (Mon–Sun)'
-                  : 'US standard (Sun–Sat)'}
+                {state.weekStartMonday ? 'ISO standard (Mon–Sun)' : 'US standard (Sun–Sat)'}
               </small>
             </div>
             <label className="settings-toggle" aria-label="Toggle week start day">
@@ -334,11 +326,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
                 This will permanently delete all tasks and settings.
               </span>
               <div className="settings-confirm__actions">
-                <button
-                  className="settings-confirm__yes"
-                  type="button"
-                  onClick={handleClearAll}
-                >
+                <button className="settings-confirm__yes" type="button" onClick={handleClearAll}>
                   Yes, clear everything
                 </button>
                 <button

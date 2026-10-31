@@ -16,7 +16,7 @@ interface ListViewProps {
 }
 
 export function ListView({ tasks, categories, onEditTask, dispatch }: ListViewProps) {
-  const categoryMap = new Map(categories.map(c => [c.id, c]));
+  const categoryMap = new Map(categories.map((c) => [c.id, c]));
 
   // Sort tasks by start day
   const sorted = [...tasks].sort((a, b) => a.startDay - b.startDay);
@@ -41,11 +41,11 @@ export function ListView({ tasks, categories, onEditTask, dispatch }: ListViewPr
         <span>Sub-tasks</span>
       </div>
       <div className="list-items">
-        {sorted.map(task => {
+        {sorted.map((task) => {
           const cat = categoryMap.get(task.categoryId);
           const startDate = dayNumToDate(task.startDay);
           const endDate = dayNumToDate(task.endDay);
-          const completedSub = task.subtasks.filter(st => st.done).length;
+          const completedSub = task.subtasks.filter((st) => st.done).length;
           const totalSub = task.subtasks.length;
 
           return (
@@ -54,7 +54,7 @@ export function ListView({ tasks, categories, onEditTask, dispatch }: ListViewPr
               className={`list-item ${task.done ? 'is-done' : ''}`}
               onClick={() => onEditTask(task.id)}
             >
-              <div className="list-col-status" onClick={e => e.stopPropagation()}>
+              <div className="list-col-status" onClick={(e) => e.stopPropagation()}>
                 <input
                   type="checkbox"
                   checked={task.done}

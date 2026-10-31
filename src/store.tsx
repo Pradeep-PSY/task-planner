@@ -3,8 +3,23 @@
  * Single source of truth for tasks, categories, meta and UI state.
  */
 
-import React, { createContext, useContext, useReducer, useCallback, useEffect, useRef } from 'react';
-import type { AppData, AppMeta, CalendarView, Category, Priority, SubTask, Task } from './lib/types';
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
+import type {
+  AppData,
+  AppMeta,
+  CalendarView,
+  Category,
+  Priority,
+  SubTask,
+  Task,
+} from './lib/types';
 import {
   clearAllData,
   DEFAULT_CATEGORIES,
@@ -105,30 +120,28 @@ function reducer(state: AppState, action: Action): AppState {
     case 'UPDATE_TASK':
       return {
         ...state,
-        tasks: state.tasks.map(t => (t.id === action.task.id ? action.task : t)),
+        tasks: state.tasks.map((t) => (t.id === action.task.id ? action.task : t)),
       };
 
     case 'DELETE_TASK':
       return {
         ...state,
-        tasks: state.tasks.filter(t => t.id !== action.taskId),
+        tasks: state.tasks.filter((t) => t.id !== action.taskId),
       };
 
     case 'TOGGLE_TASK':
       return {
         ...state,
-        tasks: state.tasks.map(t =>
-          t.id === action.taskId ? { ...t, done: !t.done } : t,
-        ),
+        tasks: state.tasks.map((t) => (t.id === action.taskId ? { ...t, done: !t.done } : t)),
       };
 
     case 'TOGGLE_SUBTASK':
       return {
         ...state,
-        tasks: state.tasks.map(t => {
+        tasks: state.tasks.map((t) => {
           if (t.id !== action.taskId) return t;
           const subtasks = t.subtasks.map((st: SubTask, i: number) =>
-            i === action.subtaskIndex ? { ...st, done: !st.done } : st,
+            i === action.subtaskIndex ? { ...st, done: !st.done } : st
           );
           return { ...t, subtasks };
         }),
@@ -140,19 +153,17 @@ function reducer(state: AppState, action: Action): AppState {
     case 'UPDATE_CATEGORY':
       return {
         ...state,
-        categories: state.categories.map(c =>
-          c.id === action.category.id ? action.category : c,
+        categories: state.categories.map((c) =>
+          c.id === action.category.id ? action.category : c
         ),
       };
 
     case 'DELETE_CATEGORY':
       return {
         ...state,
-        categories: state.categories.filter(c => c.id !== action.categoryId),
-        tasks: state.tasks.map(t =>
-          t.categoryId === action.categoryId
-            ? { ...t, categoryId: action.reassignTo }
-            : t,
+        categories: state.categories.filter((c) => c.id !== action.categoryId),
+        tasks: state.tasks.map((t) =>
+          t.categoryId === action.categoryId ? { ...t, categoryId: action.reassignTo } : t
         ),
       };
 
@@ -266,7 +277,9 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
           userName: s.userName,
           weekStartMonday: s.weekStartMonday,
         });
-      } catch { /* best-effort */ }
+      } catch {
+        /* best-effort */
+      }
     };
 
     const handleVisibility = () => {
@@ -281,11 +294,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  return (
-    <StoreContext.Provider value={{ state, dispatch }}>
-      {children}
-    </StoreContext.Provider>
-  );
+  return <StoreContext.Provider value={{ state, dispatch }}>{children}</StoreContext.Provider>;
 }
 
 /* ------ Selector helpers ------ */

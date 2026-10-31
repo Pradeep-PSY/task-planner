@@ -55,9 +55,7 @@ export function MonthView({ onAddTask, onEditTask }: MonthViewProps) {
     const firstDayOfWeek = monthStart.getDay(); // 0 = Sun
 
     // Calculate offset based on weekStartMonday
-    let offset = weekStartMonday
-      ? (firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1)
-      : firstDayOfWeek;
+    let offset = weekStartMonday ? (firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1) : firstDayOfWeek;
 
     const daysInMonth = getDaysInMonth(monthStart);
     const result: DayCell[] = [];
@@ -132,7 +130,9 @@ export function MonthView({ onAddTask, onEditTask }: MonthViewProps) {
               title="Click to view day"
             >
               <div className="month-view__cell-header">
-                <span className={`month-view__date-num ${isToday ? 'month-view__date-num--today' : ''}`}>
+                <span
+                  className={`month-view__date-num ${isToday ? 'month-view__date-num--today' : ''}`}
+                >
                   {cell.date.getDate()}
                 </span>
                 {cell.tasks.length > 0 && (
@@ -159,10 +159,7 @@ export function MonthView({ onAddTask, onEditTask }: MonthViewProps) {
                       }}
                       title={t.title}
                     >
-                      <span
-                        className="month-view__task-dot"
-                        style={{ backgroundColor: color }}
-                      />
+                      <span className="month-view__task-dot" style={{ backgroundColor: color }} />
                       <span className="month-view__task-title">{t.title}</span>
                     </button>
                   );

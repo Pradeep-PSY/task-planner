@@ -161,7 +161,11 @@ export function loadData(): AppData | null {
     // Backup corrupt data
     const raw = localStorage.getItem(KEY_DATA);
     if (raw) {
-      try { localStorage.setItem(KEY_BACKUP, raw); } catch { /* ignore */ }
+      try {
+        localStorage.setItem(KEY_BACKUP, raw);
+      } catch {
+        /* ignore */
+      }
     }
     return null;
   }
@@ -170,7 +174,9 @@ export function loadData(): AppData | null {
 export function saveMeta(meta: AppMeta): void {
   try {
     localStorage.setItem(KEY_META, JSON.stringify(meta));
-  } catch { /* best-effort */ }
+  } catch {
+    /* best-effort */
+  }
 }
 
 export function loadMeta(): AppMeta | null {

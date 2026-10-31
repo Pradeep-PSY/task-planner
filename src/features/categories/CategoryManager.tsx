@@ -36,7 +36,7 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
   const [categoryToDelete, setCategoryToDelete] = useState<Category | null>(null);
   const [reassignTargetId, setReassignTargetId] = useState<number>(() => {
     // Default to first other category if available
-    const other = categories.find(c => c.id !== categoryToDelete?.id);
+    const other = categories.find((c) => c.id !== categoryToDelete?.id);
     return other ? other.id : 1;
   });
 
@@ -71,9 +71,7 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
     if (!trimmed) return;
 
     // Check duplicate case-insensitive
-    const exists = categories.some(
-      c => c.name.toLowerCase() === trimmed.toLowerCase(),
-    );
+    const exists = categories.some((c) => c.name.toLowerCase() === trimmed.toLowerCase());
     if (exists) {
       setErrorMsg('A category with this name already exists.');
       return;
@@ -111,7 +109,7 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
 
     // Check duplicate (excluding self)
     const exists = categories.some(
-      c => c.id !== cat.id && c.name.toLowerCase() === trimmed.toLowerCase(),
+      (c) => c.id !== cat.id && c.name.toLowerCase() === trimmed.toLowerCase()
     );
     if (exists) {
       setErrorMsg('A category with this name already exists.');
@@ -144,7 +142,7 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
     setErrorMsg(null);
     setCategoryToDelete(cat);
     // Set default reassign target to first available other category
-    const other = categories.find(c => c.id !== cat.id);
+    const other = categories.find((c) => c.id !== cat.id);
     if (other) setReassignTargetId(other.id);
   };
 
@@ -161,17 +159,12 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
 
   /* Count tasks in category */
   const getTaskCount = (catId: number) => {
-    return tasks.filter(t => t.categoryId === catId).length;
+    return tasks.filter((t) => t.categoryId === catId).length;
   };
 
   return (
     <div className="cat-backdrop" onClick={handleBackdropClick}>
-      <div
-        className="cat-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Manage Categories"
-      >
+      <div className="cat-modal" role="dialog" aria-modal="true" aria-label="Manage Categories">
         <div className="cat-modal__header">
           <h2 className="cat-modal__title">Manage Categories</h2>
           <button
@@ -184,11 +177,15 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
           </button>
         </div>
 
-        {errorMsg && <div className="cat-modal__error" role="alert">{errorMsg}</div>}
+        {errorMsg && (
+          <div className="cat-modal__error" role="alert">
+            {errorMsg}
+          </div>
+        )}
 
         {/* Category list */}
         <div className="cat-list">
-          {categories.map(cat => {
+          {categories.map((cat) => {
             const isEditing = editingId === cat.id;
             const taskCount = getTaskCount(cat.id);
 
@@ -202,7 +199,7 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
                     title="Current colour"
                   />
                   <div className="cat-item__color-dropdown" role="group" aria-label="Select colour">
-                    {CATEGORY_COLORS.map(color => (
+                    {CATEGORY_COLORS.map((color) => (
                       <button
                         key={color}
                         type="button"
@@ -225,9 +222,9 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
                       className="cat-item__input"
                       type="text"
                       value={editName}
-                      onChange={e => setEditName(e.target.value)}
+                      onChange={(e) => setEditName(e.target.value)}
                       onBlur={() => handleSaveEdit(cat)}
-                      onKeyDown={e => {
+                      onKeyDown={(e) => {
                         if (e.key === 'Enter') handleSaveEdit(cat);
                         if (e.key === 'Escape') setEditingId(null);
                       }}
@@ -256,9 +253,7 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
                   onClick={() => handleRequestDelete(cat)}
                   disabled={categories.length <= 1}
                   title={
-                    categories.length <= 1
-                      ? 'Cannot delete the only category'
-                      : 'Delete category'
+                    categories.length <= 1 ? 'Cannot delete the only category' : 'Delete category'
                   }
                   aria-label={`Delete category ${cat.name}`}
                 >
@@ -277,7 +272,7 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
               type="text"
               placeholder="New category name..."
               value={newCategoryName}
-              onChange={e => setNewCategoryName(e.target.value)}
+              onChange={(e) => setNewCategoryName(e.target.value)}
               maxLength={40}
               aria-label="New category name"
             />
@@ -292,7 +287,7 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
 
           {/* Colour picker for new category */}
           <div className="cat-add-form__colors" role="group" aria-label="Colour for new category">
-            {CATEGORY_COLORS.map(color => (
+            {CATEGORY_COLORS.map((color) => (
               <button
                 key={color}
                 type="button"
@@ -314,7 +309,7 @@ export default function CategoryManager({ onClose }: CategoryManagerProps) {
             message={
               getTaskCount(categoryToDelete.id) > 0
                 ? `This category has ${getTaskCount(
-                    categoryToDelete.id,
+                    categoryToDelete.id
                   )} task(s). Please choose where to reassign them before deletion:`
                 : `Are you sure you want to delete this category?`
             }

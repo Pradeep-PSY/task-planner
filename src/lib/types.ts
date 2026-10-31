@@ -58,14 +58,14 @@ export type CompactSubTask = [string, 0 | 1, number];
 
 /** Compact task object with short keys. */
 export interface CompactTask {
-  i: string;       // id
-  t: string;       // title
-  n?: string;      // notes (omitted if empty)
-  c: number;       // category index
-  s: 0 | 1;        // status: 0 = todo, 1 = done
-  a: number;       // start day
-  b: number;       // end day
-  p?: 0 | 1 | 2;   // priority (omitted if 1/normal)
+  i: string; // id
+  t: string; // title
+  n?: string; // notes (omitted if empty)
+  c: number; // category index
+  s: 0 | 1; // status: 0 = todo, 1 = done
+  a: number; // start day
+  b: number; // end day
+  p?: 0 | 1 | 2; // priority (omitted if 1/normal)
   k?: CompactSubTask[]; // sub-tasks (omitted if empty)
 }
 

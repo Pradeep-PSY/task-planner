@@ -38,9 +38,7 @@ export function DayViewModal({
   const categoryMap = new Map(categories.map((c) => [c.id, c]));
 
   // Tasks overlapping this day
-  const dayTasks = tasks.filter(
-    (t) => t.startDay <= dayNum && t.endDay >= dayNum
-  );
+  const dayTasks = tasks.filter((t) => t.startDay <= dayNum && t.endDay >= dayNum);
 
   // Esc key listener
   useEffect(() => {
@@ -68,12 +66,14 @@ export function DayViewModal({
 
         <div className="day-modal-body">
           <div className="day-modal-actions-top">
-            <button
-              className="day-modal-add-btn"
-              onClick={() => onAddTaskForDate(dayNum)}
-            >
+            <button className="day-modal-add-btn" onClick={() => onAddTaskForDate(dayNum)}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                <path
+                  d="M8 3v10M3 8h10"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
               </svg>
               <span>Add task for this day</span>
             </button>
@@ -100,10 +100,7 @@ export function DayViewModal({
                     }}
                   >
                     <div className="day-modal-task-main">
-                      <label
-                        className="day-modal-check-wrap"
-                        onClick={(e) => e.stopPropagation()}
-                      >
+                      <label className="day-modal-check-wrap" onClick={(e) => e.stopPropagation()}>
                         <input
                           type="checkbox"
                           checked={task.done}
@@ -113,14 +110,16 @@ export function DayViewModal({
                       </label>
                       <div className="day-modal-task-info">
                         <span className="day-modal-task-title">{task.title}</span>
-                        {task.notes && (
-                          <span className="day-modal-task-notes">{task.notes}</span>
-                        )}
+                        {task.notes && <span className="day-modal-task-notes">{task.notes}</span>}
                         <div className="day-modal-task-meta">
                           {cat && (
                             <span
                               className="day-modal-cat-badge"
-                              style={{ backgroundColor: cat.color + '22', color: cat.color, borderColor: cat.color + '44' }}
+                              style={{
+                                backgroundColor: cat.color + '22',
+                                color: cat.color,
+                                borderColor: cat.color + '44',
+                              }}
                             >
                               {cat.name}
                             </span>

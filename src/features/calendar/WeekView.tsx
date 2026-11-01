@@ -258,10 +258,7 @@ export function WeekView({ onAddTask, onEditTask, onOpenDayView }: WeekViewProps
                       className={`week-card  ${item.done ? 'week-card--done' : ''} ${
                         item.type === 'subtask' ? 'week-card--subtask' : ''
                       }`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onEditTask(item.task.id);
-                      }}
+                      onClick={() => onOpenDayView(dayNum)}
                     >
                       <div className="week-card__top" onClick={(e) => e.stopPropagation()}>
                         <input

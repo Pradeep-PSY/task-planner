@@ -18,6 +18,7 @@ import './MonthView.css';
 interface MonthViewProps {
   onAddTask: (dayNum: number) => void;
   onEditTask: (taskId: string) => void;
+  onOpenDayView: (dayNum: number) => void;
 }
 
 interface DayCell {
@@ -31,7 +32,7 @@ function categoryById(categories: Category[], id: number): Category | undefined 
   return categories.find((c) => c.id === id);
 }
 
-export function MonthView({ onAddTask, onEditTask }: MonthViewProps) {
+export function MonthView({ onAddTask, onOpenDayView, onEditTask }: MonthViewProps) {
   const { state } = useStore();
   const { tasks, categories, viewDate, weekStartMonday, categoryFilter } = state;
 
@@ -126,7 +127,7 @@ export function MonthView({ onAddTask, onEditTask }: MonthViewProps) {
               className={`month-view__cell ${!cell.isCurrentMonth ? 'month-view__cell--outside' : ''} ${
                 isToday ? 'month-view__cell--today' : ''
               }`}
-              onClick={() => onAddTask(cell.dayNum)}
+              onClick={() => onOpenDayView(cell.dayNum)}
               title="Click to view day"
             >
               <div className="month-view__cell-header">
@@ -153,10 +154,6 @@ export function MonthView({ onAddTask, onEditTask }: MonthViewProps) {
                         isMulti ? 'month-view__task-bar--multi' : ''
                       }`}
                       style={{ backgroundColor: color + '22', borderLeftColor: color }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onEditTask(t.id);
-                      }}
                       title={t.title}
                     >
                       <span className="month-view__task-dot" style={{ backgroundColor: color }} />
@@ -169,7 +166,7 @@ export function MonthView({ onAddTask, onEditTask }: MonthViewProps) {
                     className="month-view__overflow"
                     onClick={(e) => {
                       e.stopPropagation();
-                      onAddTask(cell.dayNum);
+                      onOpenDayView(cell.dayNum);
                     }}
                   >
                     +{overflowCount} more
